@@ -19,7 +19,7 @@ def total_spent(expenses: Iterable[Expense]) -> float:
 def total_by_category(expenses: Iterable[Expense], category: str) -> float:
     """Return total spending for a given category (case-insensitive)."""
     cat = category.strip().lower()
-    return sum(e.amount for e in expenses if e.category.strip().lower() == category.strip())
+    return sum(e.amount for e in expenses if e.category.strip().lower() == cat)
 
 def remaining_budget(budget: float, expenses: Iterable[Expense]) -> float:
     """Return how much budget remains after subtracting all expenses.
@@ -27,8 +27,7 @@ def remaining_budget(budget: float, expenses: Iterable[Expense]) -> float:
     Example: budget=100, expenses totaling 30 -> 70.
     """
     spent = total_spent(expenses)
-    # BUG: should subtract spent from budget
-    return budget + spent
+    return budget - spent
 
 
 def summarize_by_category(expenses: Iterable[Expense]) -> dict[str, float]:
