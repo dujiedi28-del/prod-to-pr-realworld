@@ -21,7 +21,6 @@ def total_by_category(expenses: Iterable[Expense], category: str) -> float:
     cat = category.strip().lower()
     return sum(e.amount for e in expenses if e.category.strip().lower() == cat)
 
-
 def remaining_budget(budget: float, expenses: Iterable[Expense]) -> float:
     """Return how much budget remains after subtracting all expenses.
 
